@@ -10,18 +10,27 @@ service /sales on new http:Listener(9092) {
 
     // GET http:localhost:9092/sales/orders
     resource function get orders() returns Order[] {
-        
+        return orders.toArray();
     };
 
     // GET http:localhost:9092/sales/orders/<Order-ID>
     resource function get orders/[string id]() returns Order|http:NotFound {
-        
+        if orders.hasKey(id) {
+            return orders.get(id);
+        }
+
+        return {body:  string `Order not found for ID: ${id}`};
     };
 
     // POST http:localhost:9092/sales/orders
     resource function post orders(Order orderRequest) returns Order|http:BadRequest {
-        
-    }
+        if orders.hasKey(orderRequest.id) {
+            return {body:  "Oder ID already exists"};
+        }
+
+        orders.add(orderRequest);
+        return orderRequest;
+    };
 }
 
 type Order record {|
