@@ -1,0 +1,7 @@
+Request to "http://localhost:9092/sales/orders/{01}" has missing required parameters:
+
+Path Parameters:
+  - 01
+
+
+Please provide values for these parameters before sending the request.

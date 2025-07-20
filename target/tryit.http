@@ -1,0 +1,70 @@
+/*
+### Try Service: 'sales' (http://localhost:9092/sales)
+
+*/
+/*
+#### GET /orders
+
+*/
+GET http://localhost:9092/sales/orders
+
+HTTP/1.1 200  - OK
+content-type: application/json
+connection: close
+server: ballerina
+date: Sun, 20 Jul 2025 13:50:11 +0530
+content-encoding: gzip
+content-length: 179
+/*
+#### POST /orders
+
+*/
+###
+POST http://localhost:9092/sales/orders
+Content-Type: application/json
+
+# Modify the JSON payload as needed
+#
+# Expected schema:
+#   object
+#   - id: string
+#   - customerId: string
+#   - itemIds: array
+#     items: string  - date: string
+#   - totalPrice: number(float)
+
+{
+  "id": "{?}",
+  "customerId": "{?}",
+  "itemIds": [
+    "M5"
+  ],
+  "date": "{?}",
+  "totalPrice": 0
+}
+
+HTTP/1.1 201  - Created
+content-type: application/json
+connection: close
+server: ballerina
+date: Sun, 20 Jul 2025 13:50:16 +0530
+content-encoding: gzip
+content-length: 89
+/*
+#### GET /orders/{id}
+
+**Path Parameters:**
+- `id` [string] (Required)
+
+
+*/
+###
+GET http://localhost:9092/sales/orders/04
+
+HTTP/1.1 200  - OK
+content-type: application/json
+connection: close
+server: ballerina
+date: Sun, 20 Jul 2025 13:52:01 +0530
+content-encoding: gzip
+content-length: 103
